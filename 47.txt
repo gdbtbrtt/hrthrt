@@ -1,0 +1,14 @@
+def resolve_conflicts():
+    neighbors = get_neighbouring_nodes()
+    longest_chain = None
+    max_length = len(blockchain.chain)
+    for node in neighbors:
+        length = get_chain_length(node)
+        chain = get_chain(node)
+        if length > max_length and is_chain_valid(chain):
+            max_length = length
+            longest_chain = chain
+    if longest_chain:
+        blockchain.chain = longest_chain
+        return True
+    return False
